@@ -3,7 +3,7 @@
 */
 const express = require("express")
 const router = express.Router()
-const Booking = require('../models/Booking')
+const Booking = require('../models/booking')
 const Customer = require('../models/Customer')
 const { check, validationResult } = require('express-validator/check')
 const moment = require('moment');

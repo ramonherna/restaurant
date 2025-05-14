@@ -1,14 +1,16 @@
-<%- include('../base/header') -%>
-<%- include('../base/navbar') -%>
+<%- include('base/header') -%>
+<%- include('base/navbar') -%>
+
 <div class="container">
-    <div class="row mb-3">
-        <div class="col-md-12">
-            <div class="alert alert-warning" role="alert">
-                    <div class="display-1">
-                        this page is not found ,please go<a href="/" class="alert-link">link</a>
-                    </div>
-            </div>
-        </div>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <div class="alert alert-warning text-center" role="alert">
+        <div class="display-4 mb-2">Página no encontrada</div>
+        <p class="lead">Lo sentimos, no pudimos encontrar la página que estás buscando.</p>
+        <a href="/" class="btn btn-outline-danger mt-3">Volver al inicio</a>
+      </div>
     </div>
+  </div>
 </div>
-<%- include('../base/footer') -%>
+
+<%- include('base/footer') -%>

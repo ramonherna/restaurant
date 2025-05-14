@@ -11,6 +11,8 @@ const Waiter = require('../models/Waiter')
 const Drink = require('../models/Drink')
 const Food = require('../models/Food')
 const Table = require('../models/Table')
+const Pizza = require('../models/Pizza');
+
 
 // Users Seeder
 let users = [
@@ -748,83 +750,118 @@ let bills = [
 
 ]
 
-// excute loop all objects
-users.forEach( (users)=> {
-    users.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
+let pizzas = [
+  new Pizza({
+    _id: "665f10000000000000000001",
+    Name: "Pepperoni",
+    Price: "100.00",
+    Type: "Clásica",
+    Category: "Especialidad",
+    Description: "Salsa de tomate, Mozzarela y Pepperoni.",
+    Image: "sys/menu-5.jpg", 
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000002",
+    Name: "Supreme",
+    Price: "160.00",
+    Type: "Suprema",
+    Category: "Especialidad",
+    Description: "Pepperoni, Salchicha Italiana, Champiñones, Cebolla Morada, Pimiento y Hierbas Finas.",
+    Image: "sys/menu-7.jpg", 
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000003",
+    Name: "Pepperoni Especial",
+    Price: "120.00",
+    Type: "Especial",
+    Category: "Gourmet",
+    Description: "Queso Mozzarela, Pepperoni, Champiñones y Hierbas finas.",
+    Image: "sys/DELIZIA_ESPECIAL.jpg", 
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000004",
+    Name: "Jamón Serrano",
+    Price: "140.00",
+    Type: "Premium",
+    Category: "Gourmet",
+    Description: "Jamón Serrano, Arúgula y Parmesano.",
+    Image: "sys/menu-4.jpg",
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000005",
+    Name: "Hawaiana Ahumada",
+    Price: "140.00",
+    Type: "Ahumada",
+    Category: "Clásica",
+    Description: "Jamón, Piña y Tocino Ahumado.",
+    Image: "sys/menu-3.jpg",
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000006",
+    Name: "Caprichosa",
+    Price: "140.00",
+    Type: "Vegetariana",
+    Category: "Especialidad",
+    Description: "Jamón, Champiñones, Pimiento y Aceitunas Negras.",
+    Image: "sys/menu-2.jpg",
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000007",
+    Name: "Meat Lover",
+    Price: "150.00",
+    Type: "Carnívora",
+    Category: "Especial",
+    Description: "Salchicha, Jamón, Salami, Tocino Ahumado y Hierbas Finas.",
+    Image: "sys/menu-6.jpg",
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000008",
+    Name: "Cuatro Quesos",
+    Price: "120.00",
+    Type: "Queso",
+    Category: "Gourmet",
+    Description: "Mozzarela, Queso Cabra, Gorgonzola y Parmesano.",
+    Image: "sys/menu-1.jpg",
+    created_at: new Date()
+  }),
+  new Pizza({
+    _id: "665f10000000000000000009",
+    Name: "Margarita",
+    Price: "140.00",
+    Type: "Clásica",
+    Category: "Vegetariana",
+    Description: "Albahaca fresca, Mozzarela, Parmesano y Aceite de Oliva.",
+    Image: "sys/menu-1.jpg",
+    created_at: new Date()
+  })
+];
 
-// excute loop all objects
-drinks.forEach( (drinks)=> {
-    drinks.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
+const seedDatabase = async () => {
+  try {
+    for (const user of users) await user.save();
+    for (const drink of drinks) await drink.save();
+    for (const food of foods) await food.save();
+    for (const table of tables) await table.save();
+    for (const chef of chefs) await chef.save();
+    for (const waiter of waiters) await waiter.save();
+    for (const customer of cstomers) await customer.save();
+    for (const book of Booking) await book.save();
+    for (const bill of bills) await bill.save();
+    for (const pizza of pizzas) await pizza.save();
 
-// excute loop all objects
-foods.forEach( (foods)=> {
-    foods.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
+    console.log(" Base de datos poblada con éxito.");
+    process.exit();
+  } catch (err) {
+    console.error("Error al poblar la base de datos:", err);
+    process.exit(1);
+  }
+};
 
-// excute loop all objects
-tables.forEach( (tables)=> {
-    tables.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
-
-// excute loop all objects
-chefs.forEach( (chefs)=> {
-    chefs.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
-
-// excute loop all objects
-waiters.forEach( (waiters)=> {
-    waiters.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
-
-// excute loop all objects
-cstomers.forEach( (cstomers)=> {
-    cstomers.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
-
-// excute loop all objects
-Booking.forEach( (Booking)=> {
-    Booking.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
-
-// excute loop all objects
-bills.forEach( (bills)=> {
-    bills.save( (err)=> {
-        if (err) {
-            console.log(err)
-        }
-    })
-})
+seedDatabase();

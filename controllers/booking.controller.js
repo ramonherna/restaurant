@@ -1,7 +1,7 @@
 /**
 * call library
 */
-const Booking = require('../models/Booking');
+const Booking = require('../models/booking');
 const Customer = require('../models/Customer')
 const { check, validationResult } = require('express-validator/check')
 
