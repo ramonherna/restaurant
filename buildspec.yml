@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Instalando dependencias..."
+      - npm install
+
+  pre_build:
+    commands:
+      - echo "Inicializando base de datos (simulado)..."
+      # IMPORTANTE: MongoDB no está disponible directamente en CodeBuild a menos que lo instales o conectes a una instancia externa.
+      # Puedes omitir esta línea si no tienes una instancia accesible:
+      # - mongo --eval "use restaurant"
+      - echo "Cargando datos falsos..."
+      - node ./seeder/seeder.js || echo "Seeder falló pero no se detiene el build"
+
+  build:
+    commands:
+      - echo "Compilación finalizada. No hay pasos de build adicionales definidos."
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
