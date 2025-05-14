@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Instalando dependencias con npm..."
+      - npm install
+
+  pre_build:
+    commands:
+      - echo "Ejecutando script de carga de datos (seeder)..."
+      - node ./seeder/seeder.js || echo "Seeder falló pero se continúa con la compilación"
+
+  build:
+    commands:
+      - echo "Compilación completada. No se ejecutan pruebas."
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
